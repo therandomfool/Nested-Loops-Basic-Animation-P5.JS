@@ -1,7 +1,8 @@
 let offset = 0;
+let count = 0;
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(900, 900);
 }
 
 function draw() {
@@ -11,9 +12,18 @@ function draw() {
 
   for(let x = 0; x <= width; x+=50){
     fill(random(255), random(255), random(255));
-    ellipse(x+offset, 200, 25,25);
+    for (let y = 0; y < height; y += 50){
+      ellipse(200, y+ count, 45,45);
+    }
+    ellipse(x+count, 200, 45,45);
 
   }
 
-  offset++;
+  if (count < width){
+    offset+= 1;
+  } else {
+    offset-= 1;
+  }
+
+  count += offset;
 }
